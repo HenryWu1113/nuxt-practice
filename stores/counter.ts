@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
-export const useCouterStore = defineStore('counter', () => {
+export const useCounterStore = defineStore('counter', () => {
+  const isLogin = ref(true)
   const count = ref(0)
   const name = ref('Eduardo')
   const doubleCount = computed(() => count.value * 2)
@@ -11,5 +12,12 @@ export const useCouterStore = defineStore('counter', () => {
     count.value--
   }
 
-  return { count, name, doubleCount, increment, decrement }
+  const login = () => {
+    isLogin.value = true
+  }
+  const logout = () => {
+    isLogin.value = false
+  }
+
+  return { isLogin, count, name, doubleCount, increment, decrement, login, logout }
 })
