@@ -1,6 +1,20 @@
 <template>
   <div class="bg-gray-900 h-auto p-10">
-    <NavbarCustomTitle />
+    <NavbarCustomTitle>
+      <div>
+        <h1>預設插槽</h1>
+        <div>
+          <p>title</p>
+          <p>content</p>
+        </div>
+      </div>
+      <template #slot1>
+        具名插槽
+      </template>
+      <template #slot2="{a}">
+        作用域插槽 {{ a }}
+      </template>
+    </NavbarCustomTitle>
     <ClientOnly>
       <div class="flex items-center gap-3 flex-col p-5">
         <h1 class="text-white">
