@@ -9,7 +9,7 @@
         toRefAge{{ toRefAge }}
       </p>
       <p>
-        obj.age{{ obj.age }}
+        obj.age{{ obj.obj1.obj2.obj3 }}
       </p>
     </div>
     <button class="text-white border border-white p-2 rounded hover:bg-gray-300 hover:text-white transition" @click="obj.age++">
@@ -33,10 +33,15 @@ const route = useRoute()
 
 const obj = ref({
   name: 'Henry',
-  age: 25
+  age: 25,
+  obj1: {
+    obj2: {
+      obj3: 100
+    }
+  }
 })
 
-const toRefAge = toRef(obj.value, 'age')
+const toRefAge = toRef(obj.value.obj1.obj2, 'obj3')
 
 const { data: hello }: { data: any } = await useFetch(
   '/api/hello',
